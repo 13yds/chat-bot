@@ -1,0 +1,194 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@font-face{
+    font-family: 'SFProText';
+    src: url("../assets/fonts/SFProText-Regular.ttf");
+}
+
+@mixin field-backgrounds{
+    background: #fff;
+    border: none;
+    box-shadow: 0px 2px 31px 13px #0A3F8E14;
+    border-radius: 16px;
+}
+.app{
+    background:center / cover no-repeat url('../assets/imgs/background.svg');
+    padding: 34px 25% 76px 25%;
+    width: -webkit-fill-available;
+    height: calc(100vh - 110px);
+    main{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    h1{
+        color:#fff;
+        font-family: "Open Sans";
+        font-weight: 700;
+        font-size: 58px;
+        line-height: 89px;
+        margin: 0;
+        overflow-wrap: normal;
+    }
+    h2{
+        color:#fff;
+        font-family: "Open Sans";
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 28px;
+        margin: 0;
+    }
+   
+}
+.screen{
+    @include field-backgrounds;
+    display: flex;
+    padding: 36px 15px 36px 19px;
+    height: inherit;
+    margin: 26px 0 38px 0;
+    overflow: auto;
+    gap:17px;
+    flex-direction: column;
+}
+.fieldWrapper{
+    position: relative;
+    input{
+        @include field-backgrounds;
+        height: 31px;
+        width: -webkit-fill-available;
+        padding:20px 70px 20px 30px;
+        outline: none;
+        &::placeholder{
+            color:#CED0D6;
+        }
+        font-family: 'Inter';
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 31px;
+    }
+    button{
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        min-width: 40px;
+        min-height: 40px;
+        border-radius: 20px;
+        background-color: transparent;
+        border: none;
+        background:center / cover no-repeat url('../assets/imgs/send-icon.svg');
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+        &:active{
+            transform: scale(0.90);
+        }
+    }
+}
+@mixin message{
+    display: flex;
+    flex-direction: row;
+    gap: 13px;
+    word-break: break-word;
+    i{
+        min-width: 40px;
+        height: 40px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    span{
+        max-width: 50%;
+        padding: 12px 20px 12px 20px;
+        border-radius: 28px;
+        gap: 10px;
+        font-family: 'SFProText';
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 155%;
+    }
+}
+.botMessage{
+    @include message;
+    color:#000000;
+    position: relative;
+    i{
+        background-image: url('../assets/imgs/avatar-bot.svg');
+    }
+    span{
+        background: #2276F533;
+    }
+    button{
+        border: none;
+        background: center / cover no-repeat url('../assets/imgs/stop.svg');
+        position: absolute;
+        top: -8px;
+        left: 42px;
+        height: 24px;
+        width: 24px;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+        &:active{
+            transform: scale(0.95);
+        }
+    }
+}
+.userMessage{
+    @include message;
+    color: #fff;
+    justify-content: flex-end;
+    i{
+        background-image: url('../assets/imgs/avatar-user.svg');
+    }
+    span{
+        background: #007AFE;
+    }
+}
+@media (orientation: landscape) and (max-width: 770px) {
+    .app{
+        height: 100vh;
+    }
+}
+@media (max-width: 770px) {
+   .app{
+        padding: 15px 15% 20px 15%;
+        height: calc(100vh - 35px);
+        h1{
+            font-size: 50px;
+            line-height: 155%;
+        }
+        h2{
+            font-size: 16px;
+            line-height: 155%;
+        }
+    }
+    .fieldWrapper{
+        input{
+            padding: 10px 60px 10px 20px;
+            font-size: 18px;
+            line-height: 155%;
+        }
+        button{
+            min-width: 36px;
+            min-height: 36px;
+            bottom: 7px;
+        }
+    }
+    .screen{
+        padding: 25px 10px 25px 14px;
+        margin: 20px 0 30px 0;
+        span{
+            padding: 8px 15px;
+            font-size: 16px;
+            line-height: 155%;
+        }
+        i{
+            min-width: 36px;
+            min-height: 36px;
+            width: 36px;
+            height: 36px;
+        }
+        button{
+            top:-12px
+        }
+    }
+  }
